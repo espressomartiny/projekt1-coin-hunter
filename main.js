@@ -12,6 +12,14 @@ panacek.style.left = "500px";
 panacek.style.top = "100px";
 let i = 1;
 
+
+let mince = document.querySelector("#mince");
+mince.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
+mince.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
+
+
+
+
 function stiskKlavesy(udalost) {
   console.log(udalost.key, udalost.keyCode);
   	let poziceL = panacek.style.left;
@@ -34,3 +42,6 @@ function stiskKlavesy(udalost) {
 	panacek.style.top = parseInt(poziceT) + i++ + "px";
   }
 }
+
+
+
