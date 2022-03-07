@@ -26,8 +26,12 @@ let minceY = parseInt(
   (mince.style.top = Math.floor(Math.random() * window.innerHeight) + "px")
 );
 
+let hudba = document.querySelector("#hudba");
+let zvukmince = document.querySelector("#zvukmince");
+
 function stiskKlavesy(udalost) {
   console.log(udalost.key, udalost.keyCode);
+  hudba.play();
 
   if (udalost.keyCode === 37) {
     panacek.src = src = "obrazky/panacek-vlevo.png";
@@ -58,5 +62,12 @@ function stiskKlavesy(udalost) {
     console.log("funguje");
     mince.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
     mince.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
+    zvukmince.play();
+    PrictiBod();
   }
 }
+
+// function PrictiBod()
+// {let skore = document.querySelector("#score")
+// let body = 0
+// skore.innerHTML = body++;}
