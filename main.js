@@ -28,6 +28,9 @@ let minceY = parseInt(
 
 let hudba = document.querySelector("#hudba");
 let zvukmince = document.querySelector("#zvukmince");
+let zvukfanfara = document.querySelector("#zvukfanfara");
+//let skore = document.querySelector("#score");
+
 
 function stiskKlavesy(udalost) {
   console.log(udalost.key, udalost.keyCode);
@@ -63,11 +66,12 @@ function stiskKlavesy(udalost) {
     mince.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
     mince.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
     zvukmince.play();
-    PrictiBod();
+    document.getElementById("score").innerHTML =
+      parseInt(document.getElementById("score").innerHTML) + 1;
+  }
+
+  if (parseInt(document.getElementById("score").innerHTML) > 5) {
+    zvukfanfara.play();
+    alert("Bravo! Povedlo se ti sesbírat rezervu jednoho akademického platu.");
   }
 }
-
-// function PrictiBod()
-// {let skore = document.querySelector("#score")
-// let body = 0
-// skore.innerHTML = body++;}
