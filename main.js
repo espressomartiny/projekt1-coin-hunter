@@ -1,24 +1,30 @@
 // toto budeš potřebovat později
+//   if (
+//     !(
+//       panacekX + panacekSirka < minceX ||
+//       minceX + minceSirka < panacekX ||
+//       panacekY + panacekVyska < minceY ||
+//       minceY + minceVyska < panacekY
+//     )
+//   ) {
+//     console.log("panacek a mince se prekryvaji");
+//   }
 
 // sem začni psát svůj program
 
 let panacek = document.querySelector("#panacek");
-let panacekSirka = panacek.style.width;
-let panacekVyska = panacek.style.height;
-panacek.style.left = "500px";
-panacek.style.top = "100px";
+
+let startX = (panacek.style.left = "500px");
+let startY = (panacek.style.top = "100px");
 let pohyb = 1;
 
 let mince = document.querySelector("#mince");
-let minceX = (mince.style.left =
-  Math.floor(Math.random() * window.innerWidth) + "px");
-let minceY = (mince.style.top =
-  Math.floor(Math.random() * window.innerHeight) + "px");
-let minceSirka = mince.style.width;
-let mincekVyska = mince.style.height;
-
-//let panacekX = panacek.style.left;
-//let panacekY = panacek.style.top;
+let minceX = parseInt(
+  (mince.style.left = Math.floor(Math.random() * window.innerWidth) + "px")
+);
+let minceY = parseInt(
+  (mince.style.top = Math.floor(Math.random() * window.innerHeight) + "px")
+);
 
 function stiskKlavesy(udalost) {
   console.log(udalost.key, udalost.keyCode);
@@ -40,14 +46,17 @@ function stiskKlavesy(udalost) {
     panacek.style.top = parseInt(panacek.style.top) + pohyb + "px";
   }
 
-  if (
-    !(
-      panacekX + panacekSirka < minceX ||
-      minceX + minceSirka < panacekX ||
-      panacekY + panacekVyska < minceY ||
-      minceY + minceVyska < panacekY
-    )
-  ) {
-    console.log("panacek a mince se prekryvaji");
+  let panacekX = parseInt(panacek.style.left);
+  let panacekY = parseInt(panacek.style.top);
+  let minceX = parseInt(mince.style.left);
+  let minceY = parseInt(mince.style.top);
+  console.log(panacekX, minceX, panacekY, minceY);
+  let x = panacekX - minceX;
+  let y = panacekY - minceY;
+
+  if (x > -40 && x < 10 && y > -50 && y < 50) {
+    console.log("funguje");
+    mince.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
+    mince.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
   }
 }
