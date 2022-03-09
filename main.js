@@ -16,7 +16,7 @@ let panacek = document.querySelector("#panacek");
 
 let startX = (panacek.style.left = "500px");
 let startY = (panacek.style.top = "100px");
-let pohyb = 1;
+let pohyb = 5;
 
 let mince = document.querySelector("#mince");
 let minceX = parseInt(
@@ -74,4 +74,24 @@ function stiskKlavesy(udalost) {
     zvukfanfara.play();
     alert("Bravo! Povedlo se ti sesbírat rezervu jednoho akademického platu.");
   }
+
+  if (panacekY < 0) {
+    zmenPolohu(panacek, panacek.style.left, window.innerHeight);
+  }
+  if (panacekY > window.innerHeight) {
+    zmenPolohu(panacek, panacek.style.left, 0);
+  }
+  if (panacekX < 0) {
+    zmenPolohu(panacek, window.innerWidth, panacek.style.top);
+  }
+  if (panacekX > window.innerWidth) {
+    zmenPolohu(panacek, 0, panacek.style.top);
+  }
 }
+
+function zmenPolohu(obj, X, Y) {
+  obj.style.left = X + "px";
+  obj.style.top = Y + "px";
+}
+
+
