@@ -13,14 +13,6 @@
 // sem začni psát svůj program
 
 let panacek = document.querySelector("#panacek");
-<<<<<<< HEAD
-
-let startX = (panacek.style.left = "500px");
-let startY = (panacek.style.top = "100px");
-let pohyb = 5;
-
-=======
->>>>>>> develop
 let mince = document.querySelector("#mince");
 let hudba = document.querySelector("#hudba");
 let zvukmince = document.querySelector("#zvukmince");
@@ -33,7 +25,7 @@ function priSpusteni() {
   umisti(
     panacek,
     window.innerWidth / 2 - panacek.naturalWidth / 2,
-    window.innerHeight / 2 - panacek.naturalHeight
+    window.innerHeight / 2 - panacek.naturalHeight / 2
   );
   umistiNahodne(mince);
 }
@@ -113,9 +105,6 @@ function vyhraj() {
   }
 }
 
-<<<<<<< HEAD
-function zmenPolohu(obj, X, Y) {
-=======
 function projdiSkrz() {
   let panacekX = parseInt(panacek.style.left);
   let panacekY = parseInt(panacek.style.top);
@@ -134,18 +123,13 @@ function projdiSkrz() {
 }
 
 function umisti(obj, X, Y) {
->>>>>>> develop
   obj.style.left = X + "px";
   obj.style.top = Y + "px";
 }
 
-<<<<<<< HEAD
-
-=======
 function umistiNahodne(obj) {
   obj.style.left =
     Math.floor(Math.random() * (window.innerWidth - obj.naturalWidth)) + "px";
   obj.style.top =
     Math.floor(Math.random() * (window.innerHeight - obj.naturalHeight)) + "px";
 }
->>>>>>> develop
