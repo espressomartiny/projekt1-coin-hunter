@@ -13,24 +13,30 @@
 // sem začni psát svůj program
 
 let panacek = document.querySelector("#panacek");
+<<<<<<< HEAD
 
 let startX = (panacek.style.left = "500px");
 let startY = (panacek.style.top = "100px");
 let pohyb = 5;
 
+=======
+>>>>>>> develop
 let mince = document.querySelector("#mince");
-let minceX = parseInt(
-  (mince.style.left = Math.floor(Math.random() * window.innerWidth) + "px")
-);
-let minceY = parseInt(
-  (mince.style.top = Math.floor(Math.random() * window.innerHeight) + "px")
-);
-
 let hudba = document.querySelector("#hudba");
 let zvukmince = document.querySelector("#zvukmince");
 let zvukfanfara = document.querySelector("#zvukfanfara");
-//let skore = document.querySelector("#score");
 
+let pohyb = 5;
+priSpusteni();
+
+function priSpusteni() {
+  umisti(
+    panacek,
+    window.innerWidth / 2 - panacek.naturalWidth / 2,
+    window.innerHeight / 2 - panacek.naturalHeight
+  );
+  umistiNahodne(mince);
+}
 
 function stiskKlavesy(udalost) {
   console.log(udalost.key, udalost.keyCode);
@@ -53,23 +59,41 @@ function stiskKlavesy(udalost) {
     panacek.style.top = parseInt(panacek.style.top) + pohyb + "px";
   }
 
+  seberMinci();
+  projdiSkrz();
+  vyhraj();
+}
+
+function seberMinci() {
   let panacekX = parseInt(panacek.style.left);
   let panacekY = parseInt(panacek.style.top);
   let minceX = parseInt(mince.style.left);
   let minceY = parseInt(mince.style.top);
-  console.log(panacekX, minceX, panacekY, minceY);
   let x = panacekX - minceX;
   let y = panacekY - minceY;
-
-  if (x > -40 && x < 10 && y > -50 && y < 50) {
-    console.log("funguje");
-    mince.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
-    mince.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
+  console.log(
+    panacekX,
+    minceX,
+    panacekY,
+    minceY,
+    window.innerWidth,
+    window.innerHeight,
+    mince.naturalWidth
+  );
+  if (
+    x > -panacek.naturalWidth &&
+    x < panacek.naturalWidth / 2 &&
+    y > -panacek.naturalHeight &&
+    y < mince.naturalHeight / 2
+  ) {
+    umistiNahodne(mince);
     zvukmince.play();
     document.getElementById("score").innerHTML =
       parseInt(document.getElementById("score").innerHTML) + 1;
   }
+}
 
+function vyhraj() {
   if (parseInt(document.getElementById("score").innerHTML) > 5) {
     zvukfanfara.play();
     alert("Bravo! Povedlo se ti sesbírat rezervu jednoho akademického platu.");
@@ -89,9 +113,39 @@ function stiskKlavesy(udalost) {
   }
 }
 
+<<<<<<< HEAD
 function zmenPolohu(obj, X, Y) {
+=======
+function projdiSkrz() {
+  let panacekX = parseInt(panacek.style.left);
+  let panacekY = parseInt(panacek.style.top);
+  if (panacekY < 0) {
+    umisti(panacek, panacek.style.left, window.innerHeight);
+  }
+  if (panacekY > window.innerHeight) {
+    umisti(panacek, panacek.style.left, 0);
+  }
+  if (panacekX < 0) {
+    umisti(panacek, window.innerWidth, panacek.style.top);
+  }
+  if (panacekX > window.innerWidth) {
+    umisti(panacek, 0, panacek.style.top);
+  }
+}
+
+function umisti(obj, X, Y) {
+>>>>>>> develop
   obj.style.left = X + "px";
   obj.style.top = Y + "px";
 }
 
+<<<<<<< HEAD
 
+=======
+function umistiNahodne(obj) {
+  obj.style.left =
+    Math.floor(Math.random() * (window.innerWidth - obj.naturalWidth)) + "px";
+  obj.style.top =
+    Math.floor(Math.random() * (window.innerHeight - obj.naturalHeight)) + "px";
+}
+>>>>>>> develop
