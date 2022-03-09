@@ -13,23 +13,22 @@
 // sem začni psát svůj program
 
 let panacek = document.querySelector("#panacek");
-
-let startX = (panacek.style.left = "500px");
-let startY = (panacek.style.top = "100px");
-let pohyb = 5;
-
 let mince = document.querySelector("#mince");
-let minceX = parseInt(
-  (mince.style.left = Math.floor(Math.random() * window.innerWidth) + "px")
-);
-let minceY = parseInt(
-  (mince.style.top = Math.floor(Math.random() * window.innerHeight) + "px")
-);
-
 let hudba = document.querySelector("#hudba");
 let zvukmince = document.querySelector("#zvukmince");
 let zvukfanfara = document.querySelector("#zvukfanfara");
-//let skore = document.querySelector("#score");
+let panacekX = parseInt(panacek.style.left);
+let panacekY = parseInt(panacek.style.top);
+let minceX = parseInt(mince.style.left);
+let minceY = parseInt(mince.style.top);
+let pohyb = 5;
+priSpusteni()
+
+
+function priSpusteni() {
+umisti(panacek, (window.innerWidth/2)-(panacek.naturalWidth/2), (window.innerHeight/2)-(panacek.naturalHeight))
+umistiNahodne(mince)
+}
 
 function stiskKlavesy(udalost) {
   console.log(udalost.key, udalost.keyCode);
@@ -96,7 +95,12 @@ function stiskKlavesy(udalost) {
   }
 }
 
-function zmenPolohu(obj, X, Y) {
+function umisti(obj, X, Y) {
   obj.style.left = X + "px";
   obj.style.top = Y + "px";
+}
+
+function umistiNahodne(obj) {
+	obj.style.left = Math.floor(Math.random() * (window.innerWidth - obj.naturalWidth)) + "px";
+	obj.style.top = Math.floor(Math.random() * (window.innerHeight - obj.naturalHeight)) + "px";
 }
