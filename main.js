@@ -19,12 +19,15 @@ let zvukmince = document.querySelector("#zvukmince");
 let zvukfanfara = document.querySelector("#zvukfanfara");
 
 let pohyb = 5;
-priSpusteni()
-
+priSpusteni();
 
 function priSpusteni() {
-umisti(panacek, (window.innerWidth/2)-(panacek.naturalWidth/2), (window.innerHeight/2)-(panacek.naturalHeight))
-umistiNahodne(mince)
+  umisti(
+    panacek,
+    window.innerWidth / 2 - panacek.naturalWidth / 2,
+    window.innerHeight / 2 - panacek.naturalHeight
+  );
+  umistiNahodne(mince);
 }
 
 function stiskKlavesy(udalost) {
@@ -50,7 +53,17 @@ function stiskKlavesy(udalost) {
 
   seberMinci();
   projdiSkrz();
+
   
+}
+
+function seberMinci() {
+  let panacekX = parseInt(panacek.style.left);
+  let panacekY = parseInt(panacek.style.top);
+  let minceX = parseInt(mince.style.left);
+  let minceY = parseInt(mince.style.top);
+  let x = panacekX - minceX;
+  let y = panacekY - minceY;
   console.log(
     panacekX,
     minceX,
@@ -60,30 +73,24 @@ function stiskKlavesy(udalost) {
     window.innerHeight,
     mince.naturalWidth
   );
-  }
-
-function seberMinci() {
-	let panacekX = parseInt(panacek.style.left);
-let panacekY = parseInt(panacek.style.top);
-let minceX = parseInt(mince.style.left);
-let minceY = parseInt(mince.style.top);
-  let x = panacekX - minceX;
-  let y = panacekY - minceY;
-
-  if (x > -40 && x < 10 && y > -50 && y < 50) {
+  if (x > - panacek.naturalWidth && x < panacek.naturalWidth/2 && y > -panacek.naturalHeight && y < mince.naturalHeight/2) {
     umistiNahodne(mince);
-	zvukmince.play();
+    zvukmince.play();
     document.getElementById("score").innerHTML =
       parseInt(document.getElementById("score").innerHTML) + 1;
-  }}
+  }
+}
 
 function vyhraj() {
   if (parseInt(document.getElementById("score").innerHTML) > 5) {
     zvukfanfara.play();
     alert("Bravo! Povedlo se ti sesbírat rezervu jednoho akademického platu.");
-  }}
+  }
+}
 
 function projdiSkrz() {
+let panacekX = parseInt(panacek.style.left);
+  let panacekY = parseInt(panacek.style.top);
   if (panacekY < 0) {
     umisti(panacek, panacek.style.left, window.innerHeight);
   }
@@ -104,6 +111,8 @@ function umisti(obj, X, Y) {
 }
 
 function umistiNahodne(obj) {
-	obj.style.left = Math.floor(Math.random() * (window.innerWidth - obj.naturalWidth)) + "px";
-	obj.style.top = Math.floor(Math.random() * (window.innerHeight - obj.naturalHeight)) + "px";
+  obj.style.left =
+    Math.floor(Math.random() * (window.innerWidth - obj.naturalWidth)) + "px";
+  obj.style.top =
+    Math.floor(Math.random() * (window.innerHeight - obj.naturalHeight)) + "px";
 }
