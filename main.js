@@ -17,10 +17,7 @@ let mince = document.querySelector("#mince");
 let hudba = document.querySelector("#hudba");
 let zvukmince = document.querySelector("#zvukmince");
 let zvukfanfara = document.querySelector("#zvukfanfara");
-let panacekX = parseInt(panacek.style.left);
-let panacekY = parseInt(panacek.style.top);
-let minceX = parseInt(mince.style.left);
-let minceY = parseInt(mince.style.top);
+
 let pohyb = 5;
 priSpusteni()
 
@@ -51,10 +48,9 @@ function stiskKlavesy(udalost) {
     panacek.style.top = parseInt(panacek.style.top) + pohyb + "px";
   }
 
-  let panacekX = parseInt(panacek.style.left);
-  let panacekY = parseInt(panacek.style.top);
-  let minceX = parseInt(mince.style.left);
-  let minceY = parseInt(mince.style.top);
+  seberMinci();
+  projdiSkrz();
+  
   console.log(
     panacekX,
     minceX,
@@ -64,34 +60,41 @@ function stiskKlavesy(udalost) {
     window.innerHeight,
     mince.naturalWidth
   );
+  }
+
+function seberMinci() {
+	let panacekX = parseInt(panacek.style.left);
+let panacekY = parseInt(panacek.style.top);
+let minceX = parseInt(mince.style.left);
+let minceY = parseInt(mince.style.top);
   let x = panacekX - minceX;
   let y = panacekY - minceY;
 
   if (x > -40 && x < 10 && y > -50 && y < 50) {
-    console.log("funguje");
-    mince.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
-    mince.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
-    zvukmince.play();
+    umistiNahodne(mince);
+	zvukmince.play();
     document.getElementById("score").innerHTML =
       parseInt(document.getElementById("score").innerHTML) + 1;
-  }
+  }}
 
+function vyhraj() {
   if (parseInt(document.getElementById("score").innerHTML) > 5) {
     zvukfanfara.play();
     alert("Bravo! Povedlo se ti sesbírat rezervu jednoho akademického platu.");
-  }
+  }}
 
+function projdiSkrz() {
   if (panacekY < 0) {
-    zmenPolohu(panacek, panacek.style.left, window.innerHeight);
+    umisti(panacek, panacek.style.left, window.innerHeight);
   }
   if (panacekY > window.innerHeight) {
-    zmenPolohu(panacek, panacek.style.left, 0);
+    umisti(panacek, panacek.style.left, 0);
   }
   if (panacekX < 0) {
-    zmenPolohu(panacek, window.innerWidth, panacek.style.top);
+    umisti(panacek, window.innerWidth, panacek.style.top);
   }
   if (panacekX > window.innerWidth) {
-    zmenPolohu(panacek, 0, panacek.style.top);
+    umisti(panacek, 0, panacek.style.top);
   }
 }
 
