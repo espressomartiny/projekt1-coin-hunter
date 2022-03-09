@@ -53,8 +53,7 @@ function stiskKlavesy(udalost) {
 
   seberMinci();
   projdiSkrz();
-
-  
+  vyhraj();
 }
 
 function seberMinci() {
@@ -73,7 +72,12 @@ function seberMinci() {
     window.innerHeight,
     mince.naturalWidth
   );
-  if (x > - panacek.naturalWidth && x < panacek.naturalWidth/2 && y > -panacek.naturalHeight && y < mince.naturalHeight/2) {
+  if (
+    x > -panacek.naturalWidth &&
+    x < panacek.naturalWidth / 2 &&
+    y > -panacek.naturalHeight &&
+    y < mince.naturalHeight / 2
+  ) {
     umistiNahodne(mince);
     zvukmince.play();
     document.getElementById("score").innerHTML =
@@ -89,7 +93,7 @@ function vyhraj() {
 }
 
 function projdiSkrz() {
-let panacekX = parseInt(panacek.style.left);
+  let panacekX = parseInt(panacek.style.left);
   let panacekY = parseInt(panacek.style.top);
   if (panacekY < 0) {
     umisti(panacek, panacek.style.left, window.innerHeight);
