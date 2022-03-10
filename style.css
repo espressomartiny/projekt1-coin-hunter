@@ -42,7 +42,9 @@ body {
 }
 
 #panacek,
-#mince {
+#mince,
+#minceStrib,
+#minceBronz {
 	position: absolute;
 }
 

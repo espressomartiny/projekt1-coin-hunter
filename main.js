@@ -13,7 +13,9 @@
 // sem začni psát svůj program
 
 let panacek = document.querySelector("#panacek");
-let mince = document.querySelector("#mince");
+let minceZ = document.querySelector("#mince");
+let minceS = document.querySelector("#minceStrib");
+let minceB = document.querySelector("#minceBronz");
 let hudba = document.querySelector("#hudba");
 let zvukmince = document.querySelector("#zvukmince");
 let zvukfanfara = document.querySelector("#zvukfanfara");
@@ -27,7 +29,9 @@ function priSpusteni() {
     window.innerWidth / 2 - panacek.naturalWidth / 2,
     window.innerHeight / 2 - panacek.naturalHeight
   );
-  umistiNahodne(mince);
+  umistiNahodne(minceZ);
+  umistiNahodne(minceS);
+  umistiNahodne(minceB);
 }
 
 function stiskKlavesy(udalost) {
@@ -51,12 +55,14 @@ function stiskKlavesy(udalost) {
     panacek.style.top = parseInt(panacek.style.top) + pohyb + "px";
   }
 
-  seberMinci();
+  seberMinci(minceZ);
+  seberMinci(minceS);
+  seberMinci(minceB);
   projdiSkrz();
   vyhraj();
 }
 
-function seberMinci() {
+function seberMinci(mince) {
   let panacekX = parseInt(panacek.style.left);
   let panacekY = parseInt(panacek.style.top);
   let minceX = parseInt(mince.style.left);
